@@ -14,3 +14,25 @@
 .amv-ai-bot{background:var(--muted,#f1f4f8);color:var(--foreground,#17212e);border-bottom-left-radius:3px}
 .amv-ai-whatsapp{display:block;font-weight:700;color:var(--brand-orange,#d76a15);margin-top:8px}
 #assistant-questions button:disabled{opacity:.55;cursor:wait}
+
+/* As perguntas prontas vêm SEMPRE antes do histórico do chat.
+   A ordem permanece correta mesmo com versões antigas do script no cache. */
+#assistant-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+#assistant-messages > * {
+  margin-block: 0;
+}
+#assistant-messages > :not(#assistant-questions):not(.amv-ai-bubble) {
+  order: -1;
+}
+#assistant-messages > #assistant-questions {
+  order: 0;
+  flex-shrink: 0;
+}
+#assistant-messages > .amv-ai-bubble {
+  order: 1;
+  flex-shrink: 0;
+}

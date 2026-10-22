@@ -12,7 +12,7 @@
 
   const stylesheet = document.createElement("link");
   stylesheet.rel = "stylesheet";
-  stylesheet.href = "assets/assistant-ai.css";
+  stylesheet.href = "assets/assistant-ai.css?v=20261022-ordem3";
   document.head.appendChild(stylesheet);
 
   const subtitle = panel.querySelector("header p.text-xs");
