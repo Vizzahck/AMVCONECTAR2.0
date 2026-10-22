@@ -44,7 +44,8 @@
     const bubble = document.createElement("div");
     bubble.className = "amv-ai-bubble " + (role === "user" ? "amv-ai-user" : "amv-ai-bot");
     bubble.textContent = value;
-    messages.insertBefore(bubble, questions);
+    // Os atalhos do FAQ ficam no topo; a conversa segue abaixo, em ordem cronológica.
+    messages.appendChild(bubble);
     bubble.scrollIntoView({behavior:"smooth",block:"nearest"});
     return bubble;
   }
