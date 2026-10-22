@@ -99,7 +99,9 @@
         throw error;
       }
       if (currentGeneration !== generation) return;
-      answer.textContent = data.answer.trim().slice(0, 2000);
+      // Respostas literárias especiais podem ultrapassar 2.000 caracteres.
+      // A Groq já limita respostas comuns no backend; 12.000 permite o slam completo.
+      answer.textContent = data.answer.trim().slice(0, 12000);
       history.push({role:"user",content:question},{role:"assistant",content:answer.textContent});
       if (history.length > 8) history.splice(0, history.length - 8);
     } catch (error) {
