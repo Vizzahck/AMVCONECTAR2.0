@@ -15,6 +15,9 @@ const FACTS = [
   "Slogan: Da sala de aula para o mercado. Conexão com o Sucesso!"
 ].join("\n");
 
+// Resposta literal do easter egg. Não enviar o texto à IA.
+const SLAM_RESPIRA_IRMAO = "Slam: “Respira, irmão”\nRespira.\nSe é que ainda dá pra respirar.\nPorque desde George Floyd, o mundo inteiro viu,\nMas o ar segue preso nas gargantas pretas do Brasil.\nRespira, João Pedro, morto dentro de casa, brincando.\nRespira, Marielle, calada por falar alto demais.\nRespira, Moïse, espancado no quiosque por cobrar o que era seu direito.\nRespira, Genivaldo, sufocado no porta-malas da PRF como se fosse gás tóxico e não gente.\nRespira…\nMas como, se o sistema pisa no pescoço e chama isso de “procedimento”?\nSe o governo pinta de progresso o que é só esquecimento?\nE a mídia finge imparcialidade,\nMas só mostra preto morto, nunca preto com dignidade.\nEles dizem: “o racismo acabou”.\nMas o preto ainda corre quando vê sirene.\nAinda é seguido no shopping, suspeito por existir.\nAinda é visto como ameaça antes de ser visto como ser.\nEnquanto isso, a tela brilha, o apresentador sorri,\nDiz que foi “confronto”, que “a polícia reagiu”.\nMas ninguém diz o nome, ninguém vê o filho que ficou,\nNinguém mostra o sangue no chão onde o corpo tombou.\nA hipocrisia é o perfume do poder.\nEles falam de liberdade, mas vendem algemas novas.\nFalam de igualdade, mas só quando é pra inglês ver.\nE ainda chamam o grito de protesto de “vitimismo”,\nComo se o luto fosse luxo e não sobrevivência.\nMas a gente resiste.\nA gente bate o tambor, levanta o punho, fala alto.\nPorque o silêncio é o que eles querem,\nE o som da nossa voz é o que mais os assusta.\nEntão, sim, eu grito:\nVidas negras importam!\nNão como slogan de hashtag,\nMas como batida de coração,\nComo herança ancestral,\nComo grito de quem não vai mais ajoelhar.\nE é engraçado, né?\nQuando o branco quer ser preto — é “estilo”.\nQuando o preto é preto — é “perigo”.\nTrançam o cabelo, dançam o ritmo, falam a gíria,\nMas na primeira batida de tambor,\nNão seguram o peso da história que carregamos.\nQuerem nossa cultura,\nMas não o nosso fardo.\nQuerem a cor,\nMas não o corpo alvejado.\nQuerem ser pretos no palco,\nMas brancos no tribunal.\nEntão que saibam:\nSer preto não é tendência, é resistência.\nÉ ser ferida e cura.\nÉ ser raiz e tempestade.\nE enquanto houver ar,\nEnquanto houver um de nós em pé,\nA luta respira.\nE o mundo vai ter que respirar também.";
+
 const SYSTEM_PROMPT = [
   "Você é o Assistente AMV, chatbot de informações institucionais da AMV Conectar.",
   "Responda em português brasileiro, de maneira simpática, clara e objetiva, usando apenas fatos confirmados desta base:",
@@ -111,6 +114,16 @@ export default {
     if (/^goldilocks[.!?]*$/i.test(message)) {
       return json({answer:"Oi isadora"},200,corsHeaders);
     }
+    // Easter egg: reconhece variações de acentos, vírgulas, pontuação e caixa.
+    const normalizedMessage = message.normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
+    if (/(?:^| )respir(?:a|e) (?:(?:meu|ai) )?irmao(?: |$)/.test(normalizedMessage)) {
+      return json({answer: SLAM_RESPIRA_IRMAO}, 200, corsHeaders);
+    }
+
     if (!env.GROQ_API_KEY) {
       return json({error:"Assistente ainda não configurado."},503,corsHeaders);
     }
