@@ -106,6 +106,11 @@ export default {
       // Não deixa erros no limitador abrirem acesso ilimitado à API.
       return json({error:"Proteção do assistente indisponível."},503,corsHeaders);
     }
+    // Easter egg da AMV: resposta exata, sem chamar a API da Groq.
+    // Aceita diferenças de maiúsculas/minúsculas e pontuação final simples.
+    if (/^goldilocks[.!?]*$/i.test(message)) {
+      return json({answer:"Oi isadora"},200,corsHeaders);
+    }
     if (!env.GROQ_API_KEY) {
       return json({error:"Assistente ainda não configurado."},503,corsHeaders);
     }
