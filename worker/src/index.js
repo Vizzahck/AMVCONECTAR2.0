@@ -82,12 +82,27 @@ export default {
       .map(item => ({role:item.role,content:item.content.trim().slice(0,700)}))
       .filter(item => item.content);
 
-    // Limite aproximado de uso por origem de rede para evitar abuso da API.
-    // Use o binding AMV_RATE_LIMIT configurado em wrangler.jsonc.
-    if (env.AMV_RATE_LIMIT) {
+    // Bloqueia chamadas à Groq caso o limitador não esteja configurado.
+    // Os bindings são ativados por deploy com Wrangler/Cloudflare Builds,
+    // não pela simples colagem do JavaScript no painel.
+    if (!env.AMV_RATE_LIMIT || !env.AMV_GLOBAL_RATE_LIMIT) {
+      return json({error:"Proteção contra abuso ainda não configurada."},503,corsHeaders);
+    }
+    try {
+      // Duas proteções aproximadas por ponto de presença:
+      // orçamento compartilhado (20/min) e por IP (10/min).
+      const globalCheck = await env.AMV_GLOBAL_RATE_LIMIT.limit({key:"groq-publica"});
+      if (!globalCheck.success) {
+        return json({error:"O assistente está temporariamente ocupado."},429,corsHeaders);
+      }
       const networkKey = request.headers.get("CF-Connecting-IP") || "desconhecido";
-      const result = await env.AMV_RATE_LIMIT.limit({key:networkKey});
-      if (!result.success) return json({error:"Muitas mensagens. Aguarde um minuto."},429,corsHeaders);
+      const clientCheck = await env.AMV_RATE_LIMIT.limit({key:networkKey});
+      if (!clientCheck.success) {
+        return json({error:"Muitas mensagens. Aguarde um minuto."},429,corsHeaders);
+      }
+    } catch (_) {
+      // Não deixa erros no limitador abrirem acesso ilimitado à API.
+      return json({error:"Proteção do assistente indisponível."},503,corsHeaders);
     }
     if (!env.GROQ_API_KEY) {
       return json({error:"Assistente ainda não configurado."},503,corsHeaders);
