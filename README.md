@@ -12,13 +12,16 @@ Envie todo o conteúdo de `versao-estatica/` para a pasta pública de sua hosped
 - `assets/site.css`: estilos e temas.
 - `assets/theme.js`: tema inicial e preferência salva.
 - `assets/site.js`: menu, troca de tema, assistente, validação e envio do formulário via Formspree.
-- `assets/faq.js`: perguntas e respostas do assistente, sem IA ou serviço pago.
+- `assets/faq.js`: perguntas rápidas do assistente, preservadas como alternativa caso a IA esteja indisponível.
+- `assets/assistant-ai.js` e `assets/assistant-ai.css`: interface da IA da Groq.
+- `assets/assistant-config.js`: endereço público do Worker, nunca a chave privada.
+- `privacidade.html`: política de privacidade e tecnologias de armazenamento.
 - `assets/*.png`: logos transparentes e favicon.
 - `assets/manrope-*`: fontes locais.
 - `assets/OFL-Manrope.txt`: licença da fonte Manrope.
 
 ## Funcionalidades e limites
-O menu, o assistente, as seis páginas, imagens, ícones e fontes funcionam sem acesso à internet. Os links WhatsApp exigem internet e abrem https://wa.me/5598984833670.
+As seis páginas institucionais, os arquivos estáticos, o menu e o tema não exigem serviços externos. O chatbot com Groq, o Formspree e o WhatsApp exigem conexão com a internet. Os links WhatsApp abrem https://wa.me/5598984833670.
 
 O formulário de contato da página inicial está configurado para enviar os dados (nome, e-mail, empresa, assunto e mensagem) ao **Formspree** no endpoint `https://formspree.io/f/mgaawnyg`. Ele só exibe confirmação após resposta positiva do serviço. Se ocorrer erro, informa o problema e mantém os campos preenchidos. O Formspree exige conexão com a internet, conta ativa e e-mail de destino confirmado. Os envios e notificações ficam sujeitos às configurações e limites do serviço. A confirmação de entrega à caixa de e-mail deve ser verificada no painel do Formspree.
 
@@ -29,8 +32,18 @@ A preferência claro/escuro é salva quando o navegador permite armazenamento lo
 O site existente não foi substituído: esta pasta é uma entrega independente em HTML, CSS e JavaScript puro. A logo superior é distinta da logo central e do rodapé, preservando as versões atuais sem fundo. Ícones SVG estão embutidos nos arquivos HTML.
 
 
-## Integração opcional com IA da Groq
+## Integração ativa com IA da Groq
 
-O site **continua no GitHub Pages**. O assistente com IA foi preparado, mas ficará desativado até a publicação de um Worker separado e a configuração da URL em `assets/assistant-config.js`. Até lá, as perguntas rápidas funcionam como antes.
+O site permanece hospedado no GitHub Pages. O assistente usa uma Cloudflare Worker independente para encaminhar perguntas à Groq sem expor o segredo `GROQ_API_KEY`. O endereço do Worker está em `assets/assistant-config.js`, mas a chave real existe somente nos Secrets da Cloudflare. O chatbot foi implantado em outubro de 2026 e deve ter sua disponibilidade e cotas periodicamente verificadas. O uso do assistente está sujeito aos limites da Groq e Cloudflare.
 
-Consulte [worker/README.md](worker/README.md) para configurar o backend privado, o segredo `GROQ_API_KEY` e as proteções contra abuso. **Nunca coloque a chave da Groq no repositório.**
+## Autoria e direitos
+
+O desenvolvimento técnico e design originais do site foram feitos por **Vizza** e são atribuídos a Vizza. O projeto pedagógico AMV Conectar pertence a seu contexto institucional e coletivo. Direitos sobre imagens, textos de colaboradores, fontes licenciadas e outros materiais de terceiros permanecem com seus respectivos titulares. O símbolo ® só deve ser usado para marca registrada; o crédito de desenvolvimento não exige registro de marca.
+
+## Privacidade e cookies
+
+A página `privacidade.html` descreve o uso de armazenamento local para preferência de tema, o formulário enviado pelo Formspree e o chat encaminhado pela Cloudflare à Groq. Nesta versão não foram incluídos scripts de anúncios ou de rastreamento de visitantes, de modo que não se instalou um banner para cookies não essenciais. Se novos recursos de análise/publicidade forem adicionados, revisar a política e, quando necessário, implementar consentimento prévio e opção de recusa.
+
+## Manutenção
+
+Não copie segredos para o GitHub. Para atualizar a base de conhecimento da IA, edite `worker/src/index.js` e faça deploy na branch vinculada ao Cloudflare Builds. O Worker foi conectado inicialmente à branch `feat/assistente-groq-cloudflare`; mantenha-a em sincronia com a `main` ou configure a produção do Worker para `main` antes de depender apenas dela.
