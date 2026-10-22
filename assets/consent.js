@@ -72,7 +72,7 @@
     // O visitante pode reabrir o aviso a qualquer momento, em qualquer página.
     const footer = document.querySelector("footer");
     if (footer) {
-      const footerContainer = footer.querySelector(".border-t.border-on-panel\\/15") ||
+      const footerContainer = footer.querySelector(".border-t") ||
         footer.querySelector(".privacy-wrap") || footer;
       const wrap = document.createElement("p");
       wrap.className = "amv-cookie-manage-wrap";
