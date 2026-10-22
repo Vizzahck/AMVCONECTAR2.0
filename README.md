@@ -27,3 +27,10 @@ Para testar: publique no GitHub Pages, acesse a página de contato e envie uma m
 A preferência claro/escuro é salva quando o navegador permite armazenamento local. Abrir arquivos diretamente pode restringir essa persistência em alguns navegadores; em uma hospedagem normal, ela é compartilhada entre as páginas.
 
 O site existente não foi substituído: esta pasta é uma entrega independente em HTML, CSS e JavaScript puro. A logo superior é distinta da logo central e do rodapé, preservando as versões atuais sem fundo. Ícones SVG estão embutidos nos arquivos HTML.
+
+
+## Integração opcional com IA da Groq
+
+O site **continua no GitHub Pages**. O assistente com IA foi preparado, mas ficará desativado até a publicação de um Worker separado e a configuração da URL em `assets/assistant-config.js`. Até lá, as perguntas rápidas funcionam como antes.
+
+Consulte [worker/README.md](worker/README.md) para configurar o backend privado, o segredo `GROQ_API_KEY` e as proteções contra abuso. **Nunca coloque a chave da Groq no repositório.**
