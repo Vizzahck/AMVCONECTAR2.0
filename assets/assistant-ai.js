@@ -45,7 +45,7 @@
     bubble.className = "amv-ai-bubble " + (role === "user" ? "amv-ai-user" : "amv-ai-bot");
     bubble.textContent = value;
     messages.insertBefore(bubble, questions);
-    messages.scrollTop = messages.scrollHeight;
+    bubble.scrollIntoView({behavior:"smooth",block:"nearest"});
     return bubble;
   }
   function setBusy(flag) {
@@ -124,7 +124,7 @@
       if (currentGeneration === generation) {
         controller = null;
         setBusy(false);
-        messages.scrollTop = messages.scrollHeight;
+        answer.scrollIntoView({behavior:"smooth",block:"nearest"});
       }
     }
   }
