@@ -47,3 +47,8 @@ A página `privacidade.html` descreve o uso de armazenamento local para preferê
 ## Manutenção
 
 Não copie segredos para o GitHub. Para atualizar a base de conhecimento da IA, edite `worker/src/index.js` e faça deploy na branch vinculada ao Cloudflare Builds. O Worker foi conectado inicialmente à branch `feat/assistente-groq-cloudflare`; mantenha-a em sincronia com a `main` ou configure a produção do Worker para `main` antes de depender apenas dela.
+
+
+## Banner de privacidade (Outubro de 2026)
+
+O aviso flutuante com os botões **Aceitar** e **Recusar** aparece na primeira visita e pode ser reaberto por **Preferências de privacidade**, no rodapé. Como não há cookies próprios de publicidade/estatísticas no site, a escolha diz respeito somente a salvar a preferência opcional de tema claro/escuro no `localStorage`. Quando a opção é recusada, o tema não é salvo; é mantido apenas `amv-cookie-choice=rejected` para lembrar a recusa. Ao aceitar, grava `amv-cookie-choice=accepted` e a preferência de tema. A política explica que usar o formulário ou enviar mensagens ao chatbot envolve processamento por serviços externos, independentemente desta preferência. Nenhum pixel de anúncio ou biblioteca de métricas foi acrescentado.

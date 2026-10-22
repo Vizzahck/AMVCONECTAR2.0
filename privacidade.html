@@ -7,7 +7,7 @@
   <title>Privacidade e Cookies | AMV Conectar</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="assets/site.css">
-  <script src="assets/theme.js"></script>
+  <script src="assets/theme.js?v=20261022-cookie1"></script>
   <style>
     .privacy-wrap{width:min(100% - 2.5rem,54rem);margin:0 auto}
     .privacy-header{background:var(--background);border-bottom:1px solid var(--border)}
@@ -27,7 +27,7 @@
     .privacy-footer p{font-size:.78rem;line-height:1.8;opacity:.85}
     .privacy-footer a{color:var(--on-panel);text-decoration:underline}
   </style>
-</head>
+<link rel="stylesheet" href="assets/consent.css?v=20261022-cookie1"></head>
 <body>
 <header class="privacy-header">
   <div class="privacy-wrap privacy-top">
@@ -48,8 +48,9 @@
   <p>Ao enviar o formulário, você fornece voluntariamente nome, e-mail, empresa (quando preenchida), assunto e mensagem. Essas informações são encaminhadas ao serviço <strong>Formspree</strong> para viabilizar o recebimento e o acompanhamento de seu contato. Evite enviar informações sensíveis desnecessárias.</p>
   <h2>2. Assistente com inteligência artificial</h2>
   <p>As perguntas enviadas ao Assistente AMV, acompanhadas de um histórico curto da conversa quando necessário, passam por um <strong>Cloudflare Worker</strong> e são encaminhadas à <strong>Groq</strong> para produzir respostas. Não envie documentos pessoais, senhas, dados financeiros ou informações médicas pelo chat.</p>
-  <h2>3. Preferência de tema</h2>
-  <p>O tema claro ou escuro pode ser salvo no <strong>localStorage</strong> do seu navegador com a finalidade de lembrar sua escolha. Isso não é utilizado pelo código do site para publicidade personalizada.</p>
+  <h2>3. Preferências de privacidade e tema</h2>
+  <p>Ao entrar no site, você pode escolher <strong>Aceitar</strong> ou <strong>Recusar</strong> o armazenamento opcional da preferência de tema. Se aceitar, o tema claro ou escuro será salvo no <strong>localStorage</strong> para ser lembrado nas próximas visitas. Se recusar, o site não salvará essa preferência, e o modo de exibição seguirá a preferência do sistema ao abrir uma nova página.</p>
+  <p>A decisão de aceitar ou recusar é armazenada localmente apenas para recordar sua escolha e evitar que a barrinha reapareça a cada visita. Você pode alterá-la pelo botão <strong>Preferências de privacidade</strong> no rodapé. Não usamos esse armazenamento para publicidade personalizada.</p>
   <h2>4. Dados técnicos e serviços externos</h2>
   <p>O GitHub Pages, a Cloudflare, a Groq e o Formspree podem tratar informações técnicas necessárias à operação, segurança e prestação dos serviços, como endereço IP e registros de requisições, de acordo com suas próprias políticas. Parte desse processamento pode ocorrer fora do Brasil.</p>
   <h2>5. Finalidades e direitos</h2>
@@ -66,5 +67,5 @@
     <p><a href="index.html">Voltar à AMV Conectar</a></p>
   </div>
 </footer>
-</body>
+<script defer src="assets/consent.js?v=20261022-cookie1"></script></body>
 </html>
