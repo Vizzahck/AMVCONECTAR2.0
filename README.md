@@ -52,3 +52,12 @@ Não copie segredos para o GitHub. Para atualizar a base de conhecimento da IA, 
 ## Banner de privacidade (Outubro de 2026)
 
 O aviso flutuante com os botões **Aceitar** e **Recusar** aparece na primeira visita e pode ser reaberto por **Preferências de privacidade**, no rodapé. Como não há cookies próprios de publicidade/estatísticas no site, a escolha diz respeito somente a salvar a preferência opcional de tema claro/escuro no `localStorage`. Quando a opção é recusada, o tema não é salvo; é mantido apenas `amv-cookie-choice=rejected` para lembrar a recusa. Ao aceitar, grava `amv-cookie-choice=accepted` e a preferência de tema. A política explica que usar o formulário ou enviar mensagens ao chatbot envolve processamento por serviços externos, independentemente desta preferência. Nenhum pixel de anúncio ou biblioteca de métricas foi acrescentado.
+
+
+## Página Equipe (V1)
+
+A página `equipe.html` apresenta espaços para fotografias dos integrantes, com nome e função. A V1 inclui um atalho para a página no menu principal, no menu móvel, no rodapé e na navegação institucional. A folha `assets/equipe.css` cuida do layout responsivo e respeita o modo claro/escuro.
+
+Os seis cartões iniciais são **espaços reservados ilustrativos**, não representam o tamanho oficial da equipe. Para preencher, substitua as silhuetas em `.amv-team-photo` por imagens com texto alternativo descritivo, edite os campos `Nome do integrante` e `Função na equipe` e ajuste a quantidade de cartões à lista real de membros. Publique fotos e nomes apenas com autorização das pessoas.
+
+Esta alteração foi solicitada **somente para a V1**, sem modificar a V2 (`Vizzahck/Amv.Ultimate`).
