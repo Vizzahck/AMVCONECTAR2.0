@@ -1,0 +1,17 @@
+/* AMV V1 – Equipe. Complementa as cores e os modos existentes. */
+.amv-team-intro{max-width:810px;font-size:1.05rem;line-height:1.85;color:var(--muted-foreground)}
+.amv-team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.amv-team-card{min-width:0;overflow:hidden;border:1px solid var(--border);border-radius:16px;background:var(--background);transition:transform .2s,box-shadow .2s}
+.amv-team-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(13,41,72,.09)}
+.amv-team-photo{aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--brand-deep);background:linear-gradient(140deg,var(--brand-soft),var(--surface-blue));position:relative;overflow:hidden}
+.amv-team-photo:before{content:"";position:absolute;width:230px;height:230px;border:1px solid var(--brand-orange);border-radius:50%;opacity:.2;top:-100px;right:-80px;pointer-events:none}
+.amv-team-photo svg{position:relative;width:88px;height:88px;opacity:.48}
+.amv-team-photo span{position:relative;font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.08em;opacity:.8}
+.amv-team-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.amv-team-info{text-align:center;padding:22px 17px 26px}
+.amv-team-info h2{color:var(--brand-deep);font-size:18px;line-height:1.45;font-weight:800}
+.amv-team-info p{color:var(--brand-orange);font-size:13px;line-height:1.7;font-weight:800;margin-top:7px}
+.amv-team-note{border-left:3px solid var(--brand-orange);padding:16px 19px;background:var(--surface-blue);border-radius:0 10px 10px 0;color:var(--foreground);font-size:13px;line-height:1.8}
+@media(max-width:850px){.amv-team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.amv-team-grid{grid-template-columns:1fr;gap:18px}.amv-team-photo{aspect-ratio:5/4}}
+@media(prefers-reduced-motion:reduce){.amv-team-card{transition:none}.amv-team-card:hover{transform:none}}
