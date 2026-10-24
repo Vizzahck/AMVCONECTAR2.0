@@ -56,8 +56,10 @@ O aviso flutuante com os botões **Aceitar** e **Recusar** aparece na primeira v
 
 ## Página Equipe (V1)
 
-A página `equipe.html` apresenta espaços para fotografias dos integrantes, com nome e função. A V1 inclui um atalho para a página no menu principal, no menu móvel, no rodapé e na navegação institucional. A folha `assets/equipe.css` cuida do layout responsivo e respeita o modo claro/escuro.
+A página `equipe.html` organiza os participantes **por áreas de atuação**, uma seção por área, mostrando o **nome da área acima** e, logo abaixo, uma grade com **fotos e nomes** de todas as pessoas daquela área. A função **não** é repetida individualmente em cada cartão. A V1 contém o link no menu principal, menu móvel, rodapé e navegação institucional.
 
-Os seis cartões iniciais são **espaços reservados ilustrativos**, não representam o tamanho oficial da equipe. Para preencher, substitua as silhuetas em `.amv-team-photo` por imagens com texto alternativo descritivo, edite os campos `Nome do integrante` e `Função na equipe` e ajuste a quantidade de cartões à lista real de membros. Publique fotos e nomes apenas com autorização das pessoas.
+Os nomes das quatro áreas iniciais e os dez cartões são **exemplos para layout** (não são a lista real de funções nem representam a quantidade de integrantes); as áreas e quantidades serão ajustadas quando a equipe enviar seus dados. O estilo responsivo e os modos claro/escuro usam `assets/equipe.css`.
 
-Esta alteração foi solicitada **somente para a V1**, sem modificar a V2 (`Vizzahck/Amv.Ultimate`).
+Para editar os grupos, no `equipe.html` procure os blocos identificados com `<!-- ÁREA N -->`, e substitua o título `<h3>`, a descrição e a quantidade de cartões dentro de cada `.amv-team-grid`. Para cadastrar uma pessoa, substitua o SVG/legenda provisórios da `.amv-team-photo` por `<img src="assets/equipe/foto-do-membro.webp" alt="Retrato de Nome Sobrenome" loading="lazy">`, remova `role="img"` / `aria-label` da div e substitua `Nome do integrante` por seu nome. Ajuste imagens com a autorização dos retratados.
+
+**Escopo:** alteração apenas na V1, sem modificar a V2 (`Vizzahck/Amv.Ultimate`).
