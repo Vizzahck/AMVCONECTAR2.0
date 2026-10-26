@@ -14,3 +14,7 @@ html:not(.dark) .amv-theme-logo .amv-brand-image--light{display:block!important}
 html.dark .amv-theme-logo .amv-brand-image--light{display:none!important}
 html.dark .amv-theme-logo .amv-brand-image--dark{display:block!important}
 @media(max-width:600px){.amv-theme-logo--header{width:128px}.amv-theme-logo--footer{max-width:220px}}
+
+/* No modo claro, a logo preta precisa de contraste sobre o rodapé azul-escuro. */
+html:not(.dark) .amv-footer-brand-row > a{background:#f8fafc;border-radius:12px;padding:8px 10px}
+html.dark .amv-footer-brand-row > a{background:transparent}
